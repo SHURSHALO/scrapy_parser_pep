@@ -14,7 +14,9 @@ class PepSpider(scrapy.Spider):
     name: str = 'pep'
     start_urls: List[str] = [f'https://{ALLOWED_DOMAINS}/']
 
-    def parse(self, response: Response) -> Generator[scrapy.Request, None, None]:
+    def parse(
+        self, response: Response
+    ) -> Generator[scrapy.Request, None, None]:
         section = response.css('section#index-by-category')
 
         tbody = section.css('tbody')

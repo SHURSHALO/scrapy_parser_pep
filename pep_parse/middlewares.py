@@ -15,14 +15,20 @@ class PepParseSpiderMiddleware:
     def process_spider_input(self, response: Response, spider: Spider) -> None:
         return None
 
-    def process_spider_output(self, response: Response, result: Iterable, spider: Spider) -> Iterable:
+    def process_spider_output(
+        self, response: Response, result: Iterable, spider: Spider
+    ) -> Iterable:
         for i in result:
             yield i
 
-    def process_spider_exception(self, response: Response, exception: Exception, spider: Spider) -> None:
+    def process_spider_exception(
+        self, response: Response, exception: Exception, spider: Spider
+    ) -> None:
         pass
 
-    def process_start_requests(self, start_requests: Iterable, spider: Spider) -> Iterable:
+    def process_start_requests(
+        self, start_requests: Iterable, spider: Spider
+    ) -> Iterable:
         for r in start_requests:
             yield r
 
@@ -41,10 +47,14 @@ class PepParseDownloaderMiddleware:
     def process_request(self, request: Request, spider: Spider) -> None:
         return None
 
-    def process_response(self, request: Request, response: Response, spider: Spider) -> Response:
+    def process_response(
+        self, request: Request, response: Response, spider: Spider
+    ) -> Response:
         return response
 
-    def process_exception(self, request: Request, exception: Exception, spider: Spider) -> None:
+    def process_exception(
+        self, request: Request, exception: Exception, spider: Spider
+    ) -> None:
         pass
 
     def spider_opened(self, spider: Spider) -> None:

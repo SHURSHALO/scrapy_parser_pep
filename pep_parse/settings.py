@@ -2,9 +2,9 @@ from datetime import datetime
 from pathlib import Path
 
 
-BOT_NAME = 'pep_parse' 
-NEWSPIDER_MODULE = f'{BOT_NAME}.spiders' 
-SPIDER_MODULES = [NEWSPIDER_MODULE] 
+BOT_NAME = 'pep_parse'
+NEWSPIDER_MODULE = f'{BOT_NAME}.spiders'
+SPIDER_MODULES = [NEWSPIDER_MODULE]
 
 CSV = 'csv'
 
