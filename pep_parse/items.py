@@ -2,6 +2,6 @@ import scrapy
 
 
 class PepParseItem(scrapy.Item):
-    number = scrapy.Field()
-    name = scrapy.Field()
-    status = scrapy.Field()
+    number: str = scrapy.Field()
+    name: str = scrapy.Field()
+    status: str = scrapy.Field()

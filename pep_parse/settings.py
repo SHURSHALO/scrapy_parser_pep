@@ -2,24 +2,24 @@ from datetime import datetime
 from pathlib import Path
 
 
-BOT_NAME = 'pep_parse'
+BOT_NAME = 'pep_parse' 
+NEWSPIDER_MODULE = f'{BOT_NAME}.spiders' 
+SPIDER_MODULES = [NEWSPIDER_MODULE] 
 
-SPIDER_MODULES = ['pep_parse.spiders']
-NEWSPIDER_MODULE = 'pep_parse.spiders'
-
+CSV = 'csv'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ROBOTSTXT_OBEY = True
 
 FILE_NAME = (
-    f'status_summary_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.csv'
+    f'status_summary_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.{CSV}'
 )
 
 
 FEEDS = {
-    'results/pep_%(time)s.csv': {
-        'format': 'csv',
+    f'results/pep_%(time)s.{CSV}': {
+        'format': CSV,
         'encoding': 'utf8',
         'fields': ['number', 'name', 'status'],
     }

@@ -1,14 +1,20 @@
+from typing import Dict, Generator, List
+
 import scrapy
 from scrapy.exceptions import DropItem
+from scrapy.http import Response
+
 from pep_parse.items import PepParseItem
 
 
-class PepSpider(scrapy.Spider):
-    name = 'pep'
-    allowed_domains = ['peps.python.org']
-    start_urls = ['https://peps.python.org/']
+ALLOWED_DOMAINS: str = 'peps.python.org'
 
-    def parse(self, response):
+
+class PepSpider(scrapy.Spider):
+    name: str = 'pep'
+    start_urls: List[str] = [f'https://{ALLOWED_DOMAINS}/']
+
+    def parse(self, response: Response) -> Generator[scrapy.Request, None, None]:
         section = response.css('section#index-by-category')
 
         tbody = section.css('tbody')
@@ -18,8 +24,8 @@ class PepSpider(scrapy.Spider):
             pep_link = tr.css('a[href^="pep"]::attr(href)').extract_first()
             columns = tr.css('a::text').getall()
             if columns:
-                number = columns[0].strip()
-                name = (columns[1].strip(),)
+                number: str = columns[0].strip()
+                name: str = columns[1].strip()
             else:
                 raise DropItem('Ошибка данных')
 
@@ -29,11 +35,11 @@ class PepSpider(scrapy.Spider):
                 meta={'number': number, 'name': name},
             )
 
-    def parse_pep(self, response):
-        status = response.css('abbr::text').get().strip()
-        data = {
+    def parse_pep(self, response: Response) -> PepParseItem:
+        status: str = response.css('abbr::text').get().strip()
+        data: Dict[str, str] = {
             'number': response.meta['number'],
             'name': response.meta['name'],
             'status': status,
         }
-        yield PepParseItem(data)
+        return PepParseItem(data)
