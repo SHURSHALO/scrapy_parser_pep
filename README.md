@@ -16,8 +16,14 @@ git clone git@github.com:SHURSHALO/scrapy_parser_pep.git
 ```
 cd scrapy_parser_pep
 ```
-
-3. Установить необходимые зависимости с помощью pip:
+3. Cоздайте и активируйте виртуальное окружение:
+```
+py -3.9 -m venv venv
+```
+```
+source venv/Scripts/activate
+```
+4. Установить необходимые зависимости с помощью pip:
 ```
 pip install -r requirements.txt
 ```
