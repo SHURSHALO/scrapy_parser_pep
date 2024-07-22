@@ -10,16 +10,16 @@
 
 1. Клонировать репозиторий:
 ```
-    git clone git@github.com:SHURSHALO/scrapy_parser_pep.git
+git clone git@github.com:SHURSHALO/scrapy_parser_pep.git
 ```
 2. Перейти в каталог проекта:
 ```
-    cd scrapy_parser_pep
+cd scrapy_parser_pep
 ```
 
 3. Установить необходимые зависимости с помощью pip:
 ```
-    pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Использование
